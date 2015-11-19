@@ -11,22 +11,6 @@ import (
 	"github.com/skynetservices/skydns/cache"
 )
 
-func TestFit(t *testing.T) {
-	m := new(dns.Msg)
-	m.SetQuestion("miek.nl", dns.TypeA)
-
-	rr, _ := dns.NewRR("www.miek.nl. IN SRV 10 10 8080 blaat.miek.nl.")
-	for i := 0; i < 101; i++ {
-		m.Answer = append(m.Answer, rr)
-	}
-	// Uncompresses length is now 4424. Try trimming this to 1927
-	Fit(m, 1927, true)
-
-	if m.Len() > 1927 {
-		t.Fatalf("failed to fix message, expected < %d, got %d", 1927, m.Len())
-	}
-}
-
 func TestCacheTruncated(t *testing.T) {
 	s := newTestServer(t, true)
 	m := &dns.Msg{}
