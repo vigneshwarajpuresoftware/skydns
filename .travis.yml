@@ -11,6 +11,6 @@ install:
 before_script:
   - curl -L  https://github.com/coreos/etcd/releases/download/v2.3.1/etcd-v2.3.1-linux-amd64.tar.gz -o etcd-v2.3.1-linux-amd64.tar.gz
   - tar xzvf etcd-v2.3.1-linux-amd64.tar.gz
-  - ./etcd-v2.3.1-linux-amd64/etcd &
+  - ./etcd-v2.3.1-linux-amd64/etcd & 
 script:
   - go test -tags etcd -bench=. ./...
