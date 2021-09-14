@@ -17,6 +17,8 @@ before_install:
   - /tmp/etcd-download-test/etcdctl version
   - /tmp/etcd-download-test/etcdutl version
   - /tmp/etcd-download-test/etcd
+  - mv /tmp/etcd-download-test/etcd /usr/local/bin/etcd
+  - ./bin/etcd
   - go get github.com/skynetservices/skydns
   - cd $GOPATH/src/github.com/skynetservices/skydns
   - go build -v
