@@ -41,4 +41,4 @@ script:
   - docker buildx inspect --bootstrap
   - docker login --username=ajv21 -p=Jun21@2021
   - docker buildx build -t ajv21/skydns --platform linux/arm64,linux/amd64 --push .
-  - docker buildx rm samplekit 
+  - docker buildx rm samplekit  
