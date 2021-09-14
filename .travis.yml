@@ -1,19 +1,21 @@
 language: go
+go_import_path: go.etcd.io/etcd/v3
+
 env:
   - DEP_VERSION="0.4.1"
 go:
-  - 1.17
+  - 1.16.3
 before_install:
   - curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
   - chmod +x $GOPATH/bin/dep
-  - rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+  - rm -f /tmp/etcd-v3.5.0-linux-amd64.tar.gz
   - rm -rf /tmp/etcd-download-test && mkdir -p /tmp/etcd-download-test
-  - curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
-  - tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
-  - rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+  - curl -L https://storage.googleapis.com/etcd/v3.5.0/etcd-v3.5.0-linux-amd64.tar.gz -o /tmp/etcd-v3.5.0-linux-amd64.tar.gz
+  - tar xzvf /tmp/etcd-v3.5.0-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
+  - rm -f /tmp/etcd-v3.5.0-linux-amd64.tar.gz
   - /tmp/etcd-download-test/etcd --version
   - /tmp/etcd-download-test/etcdctl version
-  - /tmp/etcd-download-test/etcdutl versio
+  - /tmp/etcd-download-test/etcdutl version
   - go get github.com/skynetservices/skydns
   - cd $GOPATH/src/github.com/skynetservices/skydns
   - go build -v
