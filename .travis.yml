@@ -13,4 +13,4 @@ before_script:
   - tar xzvf etcd-v2.3.1-linux-amd64.tar.gz
   - ./etcd-v2.3.1-linux-amd64/etcd & 
 script:
-  - go test -tags etcd -bench=. ./...
+  - docker --version
