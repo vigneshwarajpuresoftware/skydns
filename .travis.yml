@@ -2,10 +2,18 @@ language: go
 env:
   - DEP_VERSION="0.4.1"
 go:
-  - 1.16
+  - 1.17
 before_install:
   - curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
   - chmod +x $GOPATH/bin/dep
+  - rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+  - rm -rf /tmp/etcd-download-test && mkdir -p /tmp/etcd-download-test
+  - curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+  - tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
+  - rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+  - /tmp/etcd-download-test/etcd --version
+  - /tmp/etcd-download-test/etcdctl version
+  - /tmp/etcd-download-test/etcdutl versio
   - go get github.com/skynetservices/skydns
   - cd $GOPATH/src/github.com/skynetservices/skydns
   - go build -v
