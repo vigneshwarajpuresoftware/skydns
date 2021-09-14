@@ -19,3 +19,6 @@ before_script:
   - ./etcd-v2.3.1-linux-amd64/etcd &
 script:
   - docker --version
+  - docker buildx create --name samplekit
+  - docker buildx use samplekit
+  - docker buildx rm samplekit 
