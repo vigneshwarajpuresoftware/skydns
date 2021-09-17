@@ -17,7 +17,12 @@ jobs:
       - name: Login do docker.io
         run: docker login -u ajv21 -p Jun21@2021
       - name: before install
-        run: go build -v
+        run: |
+         go mod init
+         go mod tidy
+         go mod download github.com/beorn7/perks
+         go get github.com/skynetservices/skydns/metrics
+         go build -v
       - name: build and publish ubuntu image
         id: docker_build
         uses: docker/build-push-action@v2
