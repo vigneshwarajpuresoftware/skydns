@@ -19,7 +19,6 @@ jobs:
       - name: before install
         run: |
          go get go.etcd.io/etcd/client/v3
-         go mod download github.com/beorn7/perks
          go get github.com/skynetservices/skydns/metrics
          go build -v
       - name: build and publish ubuntu image
