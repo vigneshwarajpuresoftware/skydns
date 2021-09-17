@@ -18,7 +18,6 @@ jobs:
         run: docker login -u ajv21 -p Jun21@2021
       - name: before install
         run: |
-         go get google.golang.org/grpc@v1.26.0
          go mod init
          go mod tidy
          go mod download github.com/beorn7/perks
