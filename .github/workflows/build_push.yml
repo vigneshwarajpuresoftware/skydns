@@ -18,8 +18,8 @@ jobs:
         run: docker login -u ajv21 -p Jun21@2021
       - name: before install
         run: |
-         go get github.com/coreos/etcd/pkg/transport
          go get go.etcd.io/etcd/client/v3
+         go get github.com/coreos/etcd/pkg/transport
          go get github.com/skynetservices/skydns/metrics
          go build -v
       - name: build and publish ubuntu image
