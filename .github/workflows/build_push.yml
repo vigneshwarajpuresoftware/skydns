@@ -19,8 +19,7 @@ jobs:
       - name: before install
         run: |
          go get go.etcd.io/etcd/client/v3
-         go mod init
-         go get github.com/skynetservices/skydns/metrics
+         go get github.com/skynetservices/skydns
          go build -v
       - name: build and publish ubuntu image
         id: docker_build
