@@ -25,7 +25,7 @@ import (
 	"github.com/skynetservices/skydns/server"
 
 	etcd "github.com/coreos/etcd/client"
-	etcdv3 "go get go.etcd.io/etcd/clientv3@v3.3.23"
+	etcdv3 "go get go.etcd.io/etcd/client/v3"
 	"github.com/coreos/etcd/pkg/transport"
 	"github.com/miekg/dns"
 )
