@@ -18,7 +18,6 @@ jobs:
         run: docker login -u ajv21 -p Jun21@2021
       - name: before install
         run: |
-         go get go.etcd.io/etcd/client/v3
          go get github.com/skynetservices/skydns
       - name: build and publish ubuntu image
         id: docker_build
